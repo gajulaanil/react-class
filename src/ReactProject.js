@@ -8,17 +8,6 @@ import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 
 const ReactProject = () => {
-  const sayhello = () => {
-    console.log("Hello World!");
-  };
-  const printName = (fun) => {
-    if (typeof fun === "function") {
-      fun();
-    }
-  };
-
-  printName(sayhello);
-
   return (
     <BrowserRouter>
       <Routes>
