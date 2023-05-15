@@ -1,3 +1,10 @@
 import { combineReducers } from "redux";
 
-import todo from "../services/todo/reducer";
+// Reducers
+import Todo from "../services/todo/reducer";
+
+const rootReducers = combineReducers({
+  Todo,
+});
+
+export default rootReducers;

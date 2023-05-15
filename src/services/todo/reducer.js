@@ -6,11 +6,12 @@ import {
 
 const initialState = {
   loading: false,
-  response: [],
-  error: "",
+  todoList: [],
+  error: [],
 };
 
-const todo = (state = initialState, action) => {
+const Todo = (state = initialState, action) => {
+  console.log("state :", state, "   action:", action.type);
   switch (action.type) {
     case GET_TODO_LIST:
       state = {
@@ -18,13 +19,15 @@ const todo = (state = initialState, action) => {
         loading: true,
       };
       break;
+
     case GET_TODO_LIST_SUCCESS:
       state = {
         ...state,
         loading: false,
-        response: action.payload,
+        todoList: action.payload,
       };
       break;
+
     case GET_TODO_LIST_API_ERROR:
       state = {
         ...state,
@@ -32,10 +35,12 @@ const todo = (state = initialState, action) => {
         error: action.payload,
       };
       break;
+
     default:
-      state = { ...state };
-      break;
+      return {
+        ...state,
+      };
   }
 };
 
-export default todo;
+export default Todo;

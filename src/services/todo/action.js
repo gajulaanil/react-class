@@ -5,6 +5,7 @@ import {
 } from "./actionTypes";
 
 export const getTodoList = () => {
+  console.log("Actions Dispatched!");
   return {
     type: GET_TODO_LIST,
   };

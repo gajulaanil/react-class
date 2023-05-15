@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+
+// Services
+import { getTodoList } from "../../services/todo/action";
 
 export const Home = () => {
-  const [todos, setTodos] = useState([]);
+  // Hooks
+  const dispatch = useDispatch();
+
+  // Hooks useSelector
+  const { todos, loading } = useSelector((state) => state.Todo);
+
+  console.log(todos);
 
   useEffect(() => {
-    const url = "https://jsonplaceholder.typicode.com/todos";
-    axios
-      .get(url)
-      .then((response) => {
-        // console.log(response.data);
-        setTodos(response.data);
-      })
-      .catch((error) => {
-        //  console.log(error);
-      });
+    dispatch(getTodoList());
   }, []);
 
   return (
     <div className="homepage">
       <div>
+        {loading && <h2>Loading...</h2>}
         {todos &&
           todos.map((todo) => {
             return (
